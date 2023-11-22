@@ -17,7 +17,7 @@ services:
     image: nginx:1.25-alpine-slim
     ports:
       - "8443:8443"  # Для Webhook
-      - "8080:8088"  # Для Webhook
+#      - "8080:8088"  # Для Webhook
     volumes:
       - ./docker/nginx.conf:/etc/nginx/conf.d/bot.conf
       - ./certs:/certs
