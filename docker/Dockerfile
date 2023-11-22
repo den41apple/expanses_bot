@@ -1,11 +1,9 @@
 FROM python:3.10
 
-WORKDIR /app
-
 COPY requirements.txt .
 
-RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install --upgrade pip -r requirements.txt --no-cache-dir
 
-COPY . .
 
-CMD ["python", "main.py"]
+ENV PYTYHONBUFFERED=1
+ENTRYPOINT ["bash", "app/docker/docker-entrypoint.sh"]

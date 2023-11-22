@@ -1,0 +1,22 @@
+version: "3.9"
+name: telegram_bot
+
+services:
+  bot:
+    container_name: bot
+    build:
+      dockerfile: docker/Dockerfile
+      context: ./
+    volumes:
+      - ./:/app
+
+
+  nginx:
+    container_name: nginx
+    image: nginx:1.25-alpine-slim
+    ports:
+      - "8443:8443"  # Для Webhook
+      - "8080:8088"  # Для Webhook
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/conf.d/bot.conf
+    restart: always

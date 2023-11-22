@@ -1,4 +1,4 @@
-venv
-.git
-db.sqlite3
-mydb.db
+#venv
+#.git
+#db.sqlite3
+#mydb.db
