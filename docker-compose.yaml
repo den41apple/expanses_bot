@@ -4,6 +4,7 @@ name: telegram_bot
 services:
   bot:
     container_name: bot
+    restart: always
     build:
       dockerfile: docker/Dockerfile
       context: ./
