@@ -11,10 +11,10 @@ import handlers
 logging.basicConfig(level=logging.INFO)
 bot = Bot(config.TOKEN)
 dp = Dispatcher()
+dp.include_router(handlers.router)
 
 
 def main():
-    dp.include_router(handlers.router)
     if config.WEBHOOK_TURN_ON:
         start_webhook()
     else:
