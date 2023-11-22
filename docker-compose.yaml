@@ -19,4 +19,5 @@ services:
       - "8080:8088"  # Для Webhook
     volumes:
       - ./docker/nginx.conf:/etc/nginx/conf.d/bot.conf
+      - ./certs:/certs
     restart: always
