@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from aiogram import types
 
 available_expanses_names = ['Такси', 'Развлечения', 'Продукты', 'Собака']

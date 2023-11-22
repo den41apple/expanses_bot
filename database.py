@@ -1,8 +1,5 @@
 import datetime as dt
 import sqlite3
-from faker import Faker
-import random
-
 
 available_expanses_names_show = ['Такси', 'Развлечения', 'Продукты', 'Собака', 'Все расходы']
 
@@ -12,7 +9,7 @@ def register(user_id, username):
     cursor = connection.cursor()
     try:
         cursor.execute(
-        'INSERT INTO Users (id, username) VALUES (?,?)', (user_id, username))
+            'INSERT INTO Users (id, username) VALUES (?,?)', (user_id, username))
     except sqlite3.IntegrityError as ex:
         return 'Вы уже зарегистрированы'
     connection.commit()
@@ -63,9 +60,13 @@ def show_expanses(user_id, type_ex, date):
     connection = sqlite3.connect('mydb.db')
     cursor = connection.cursor()
     if type_ex == 'Все расходы':
-        cursor.execute(f'SELECT SUM(cost) FROM Expanse WHERE user_id = ? AND created_at >= "{now_two}" AND created_at <= "{now}"', (user_id,))
+        cursor.execute(
+            f'SELECT SUM(cost) FROM Expanse WHERE user_id = ? AND created_at >= "{now_two}" AND created_at <= "{now}"',
+            (user_id,))
     else:
-        cursor.execute(f'SELECT SUM(cost) FROM Expanse WHERE user_id = ? AND name = ? AND created_at >= "{now_two}" AND created_at <= "{now}"', (user_id, type_ex))
+        cursor.execute(
+            f'SELECT SUM(cost) FROM Expanse WHERE user_id = ? AND name = ? AND created_at >= "{now_two}" AND created_at <= "{now}"',
+            (user_id, type_ex))
     all_expanses = cursor.fetchall()
     connection.commit()
     connection.close()

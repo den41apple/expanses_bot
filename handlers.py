@@ -1,15 +1,13 @@
-# -*- coding: utf-8 -*-
 from aiogram import F, Router
 from aiogram import types
 from aiogram.filters.command import Command
 from aiogram.fsm.context import FSMContext
+
 from database import register, approve_user, \
     new_expanse, show_my_id, show_expanses
-
-from keyboards import keyboard, expanses_types_keyboard,\
-    available_expanses_names, available_expanses_names_show
 from fsm import States, ShowStates
-
+from keyboards import keyboard, expanses_types_keyboard, \
+    available_expanses_names, available_expanses_names_show
 
 router = Router()
 
