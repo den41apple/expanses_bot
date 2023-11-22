@@ -25,6 +25,7 @@ def main():
 def start_pooling():
     logging.info("START POOLING")
     loop = asyncio.get_event_loop()
+    # Необходимо удалить веб хук
     loop.run_until_complete(bot.delete_webhook())
     loop.run_until_complete(dp.start_polling(bot))
 
@@ -43,6 +44,9 @@ def start_webhook():
 
 
 async def webhook_on_startup(bot: Bot):
+    """
+    Установка веб хука
+    """
     WEBHOOK_URL = config.WEBHOOK_TELEGRAM_URL + config.WEBHOOK_TELEGRAM_PATH
     kwargs = {}
     if config.WEBHOOK_SSL_CERT:
