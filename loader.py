@@ -2,6 +2,7 @@ import asyncio
 import logging
 
 from aiogram import Bot, Dispatcher
+from aiogram.types import FSInputFile
 from aiogram.webhook.aiohttp_server import SimpleRequestHandler, setup_application
 from aiohttp import web
 
@@ -43,7 +44,10 @@ def start_webhook():
 
 async def webhook_on_startup(bot: Bot):
     WEBHOOK_URL = config.WEBHOOK_TELEGRAM_URL + config.WEBHOOK_TELEGRAM_PATH
-    await bot.set_webhook(WEBHOOK_URL)
+    kwargs = {}
+    if config.WEBHOOK_SSL_CERT:
+        kwargs.update(WEBHOOK_SSL_CERT=config.WEBHOOK_SSL_CERT)
+    await bot.set_webhook(WEBHOOK_URL, **kwargs)
 
 
 if __name__ == "__main__":
