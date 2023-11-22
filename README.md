@@ -51,6 +51,17 @@ openssl x509 -req -in certificate.csr -signkey private_key.pem -out certificate.
 WEBHOOK_TELEGRAM_URL="https://<IP_АДРЕСС>:8443"
 ```
 
+#### В **docker/nginx.conf** установить актуальный ip адрес
+
+```nginx configuration
+server {
+    ...
+    server_name <IP_АДРЕСС>;    
+    ...
+        }
+}
+```
+
 #### Собрать контейнер
 
 ```shell
